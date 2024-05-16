@@ -25,7 +25,9 @@ function trocarEspecialidade() {
 }
 
 // Clicar no link SOAP
-setTimeout(clicarSoap, 500);
+if(menuSoap){
+    setTimeout(clicarSoap, 500);
+}
 
 function clicarSoap() {
     menuSoap.click();
