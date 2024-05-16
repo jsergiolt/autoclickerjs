@@ -1,8 +1,8 @@
 var numerodecids = 0;
 
 // Encontrar elementos usando IDs diretos
-const finalizarAtendimento = document.querySelector("#sidebar > div:nth-child(1) > div:nth-child(3) > ul > li:nth-child(12) > a");
-const soap = document.querySelector("#sidebar > div:nth-child(1) > div:nth-child(3) > ul > li:nth-child(3) > a");
+const menuFinalizarAtendimento = document.querySelector("#sidebar > div:nth-child(1) > div:nth-child(3) > ul > li:nth-child(12) > a");
+const menuSoap = document.querySelector("#sidebar > div:nth-child(1) > div:nth-child(3) > ul > li:nth-child(3) > a");
 const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
 // Encontrar campos pelo ID
 const codigoEsp = document.getElementById("lookup_key_pec_atendimento_soap_codespecialidade");
@@ -28,7 +28,7 @@ function trocarEspecialidade() {
 setTimeout(clicarSoap, 500);
 
 function clicarSoap() {
-    soap.click();
+    menuSoap.click();
 }
 
 // Verificar se o campo CID foi encontrado e inserir um valor se necessário
@@ -51,7 +51,7 @@ function clicarAddCid() {
 // Clicar em finalizar atendimento
 setTimeout(finalizar, 1500);
 function finalizar() {
-    finalizarAtendimento.click();
+    menuFinalizarAtendimento.click();
 }
 
 // Preencher campos de tipo de atendimento e procedimento, e marcar checkbox de retorno
