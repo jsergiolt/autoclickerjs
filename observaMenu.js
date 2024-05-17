@@ -83,10 +83,6 @@ if (targetElement) {
                             setTimeout(() => { 
                                 campoAvaliacao.click();
                                 campoAvaliacao.focus();
-                                // Até aqui funcionou
-
-                                // Ideia para continuar = daqui mesmo já clicar no campo finalizar atendimento [mas fazer outra lógica para ele ficar observando]
-                                // Falta também fazer a mesma lógica para mudar o CBO
                             }, 100);
                         }
                         else{
@@ -104,6 +100,16 @@ if (targetElement) {
                             setTimeout(() => {
                                 botaoAdicionarCid.click();
                                 console.log("Valor 'Z00' digitado no campo.");
+                            }, 100);
+
+                            const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
+                            setTimeout(() => { 
+                                campoAvaliacao.click();
+                                campoAvaliacao.focus();
+                                // Até aqui funcionou
+
+                                // Ideia para continuar = daqui mesmo já clicar no campo finalizar atendimento [mas fazer outra lógica para ele ficar observando]
+                                // Falta também fazer a mesma lógica para mudar o CBO
                             }, 100);
                         }
                         else{
