@@ -59,7 +59,7 @@ function numeroElementosTR(idTabela) {
 
 
 // Encontre o elemento
-const targetElement = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[3]");
+const targetElement = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[13]"); // Menu finalizar atendimento
 
 if (targetElement) {
     // Crie um MutationObserver
@@ -69,58 +69,54 @@ if (targetElement) {
                 console.log('Classe alterada:', targetElement.className);
                 // Verifique se a classe 'active' foi adicionada
                 if (targetElement.classList.contains('active')) {
-                    console.log('A classe "active" foi adicionada ao item menu soap');
+                    console.log('A classe "active" foi adicionada ao item menu finalizar atendimento');
 
-                    // Aguardar aparecer o elemento campoCid e preencher com Z00
-                    waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_avaliacao_cid", (campoCodigoCid) => {
-                        // Se ja tiver CID inserido nao fazer nada
-                        if (numeroElementosTR("pec_atendimento_soap_avaliacao_cid_table") == 1) {
-                            campoCodigoCid.focus();
+                    // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
+                    waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_finalizacao_procedimento", (codProcedimento) => {
+                        // Se ja tiver Procedimento inserido nao fazer nada
+                        if (numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table") == 1) {
+                            codProcedimento.focus();
                             setTimeout(() => {
-                                campoCodigoCid.value = "Z00";
-                                console.log("Valor 'Z00' digitado no campo.");
+                                codProcedimento.value = "0301010064";
+                                console.log("Valor '0301010064' digitado no campo.");
                             }, 100);
 
-                            const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
+                            const campoProcedimento = document.getElementById("select2-chosen-23");
                             setTimeout(() => {
-                                campoAvaliacao.click();
-                                campoAvaliacao.focus();
+                                //campoProcedimento.click();
+                                campoProcedimento.focus();
                             }, 100);
                         }
                         else {
-                            console.log("Ja tem cid adicionado, nao adicionar mais")
+                            console.log("Ja tem Procedimento adicionado, nao adicionar mais")
                         }
                     });
 
-                    // Aguarda aparecer a descrição do CID e clica no botão de +
-                    botaoAdicionarCid = document.getElementById("pec_atendimento_soap_avaliacao_add_fields_button");
-                    waitForTextChange("#select2-chosen-9", (innerText) => {
-                        // Se ja tiver CID inserido nao fazer nada
-                        if (numeroElementosTR("pec_atendimento_soap_avaliacao_cid_table") == 1) {
-                            console.log("Descrição CID alterado para:", innerText);
-                            botaoAdicionarCid.focus();
+                    // Aguarda aparecer a descrição do procedimento e clica no botão de +
+                    botaoAdicionarProced = document.getElementById("pec_atendimento_soap_procedimentos_finalizacao_button");
+                    waitForTextChange("#select2-chosen-23", (innerText) => {
+                        // Se ja tiver Procedimento inserido nao fazer nada
+                        if (numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table") == 1) {
+                            console.log("Descrição Procedimento alterado para:", innerText);
+                            botaoAdicionarProced.focus();
                             setTimeout(() => {
-                                botaoAdicionarCid.click();
-                                console.log("Valor 'Z00' digitado no campo.");
+                                botaoAdicionarProced.click();
+                                console.log("botao add procedimento clicado");
                             }, 100);
 
-                            const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
+                            const campoProcedimento = document.getElementById("select2-chosen-23");
                             setTimeout(() => {
-                                campoAvaliacao.click();
+                                //campoAvaliacao.click();
                                 campoAvaliacao.focus();
-                                // Até aqui funcionou
-
-                                // Ideia para continuar = daqui mesmo já clicar no campo finalizar atendimento [mas fazer outra lógica para ele ficar observando]
-                                // Falta também fazer a mesma lógica para mudar o CBO
                             }, 100);
                         }
                         else {
-                            console.log("Ja tem cid adicionado, nao adicionar mais")
+                            console.log("Ja tem Procedimento adicionado, nao adicionar mais")
                         }
                     });
 
                 } else {
-                    console.log('A classe "active" foi removida do item menu soap');
+                    console.log('A classe "active" foi removida do item menu finalizar atendimento');
                 }
             }
         }
@@ -132,7 +128,7 @@ if (targetElement) {
     // Inicie o observer no elemento alvo
     observer.observe(targetElement, config);
 
-    console.log('Observando mudanças na classe do item menu soap');
+    console.log('Observando mudanças na classe do item menu finalizar atendimento');
 } else {
     console.log('Elemento do item menu soap não encontrado para o XPath fornecido.');
 }
