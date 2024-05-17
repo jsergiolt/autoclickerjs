@@ -188,7 +188,7 @@ if (targetElementMenuFinalizar) {
                             setTimeout(() => {
                                 botaoAdicionarProced.click();
                                 console.log("botao add procedimento clicado");
-                            }, 100);
+                            }, 500);
 
                             /*const campoProcedimento = document.getElementById("select2-chosen-23");
                             setTimeout(() => {
