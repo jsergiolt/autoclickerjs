@@ -102,3 +102,17 @@ function clicaCampoAvaliacao(){
 function marcarRetorno() {
     cbRetornoCCP.checked = true;
 }
+
+function waitForElement(elmt) {
+    var observer = new MutationObserver(function (mutations, me) {
+        //var element = document.querySelector(selector);
+        if (elmt) {
+            me.disconnect(); // stop observing
+            //callback(elmt);
+        }
+    });
+    observer.observe(document, {
+        childList: true,
+        subtree: true
+    });
+}
