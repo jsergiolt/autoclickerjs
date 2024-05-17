@@ -203,7 +203,13 @@ if (targetElementMenuFinalizar) {
                         }
                     });
 
-                    document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"). value = "5"; // Tipoatendimento
+                     // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
+                     waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id", (tipoAtend) => {
+                        tipoAtend.focus();
+                        tipoAtend.value = "5";
+                    });
+
+                    //document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"). value = "5"; // Tipoatendimento
                     document.getElementById("pec_atendimento_soap_esu_conduta_ids_7").checked = true; // Checkbox retorno programado  condinuado
 
 
