@@ -160,6 +160,8 @@ if (targetElementMenuFinalizar) {
                     // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
                     ////*[@id="lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"]
                     const tipoAtendimento = document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id");
+
+                    
                     waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_finalizacao_procedimento", (codProcedimento) => {
                         // Se ja tiver Procedimento inserido nao fazer nada
                         if (numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table") == 1) {
@@ -175,6 +177,8 @@ if (targetElementMenuFinalizar) {
                                 tipoAtendimento.click();
                                 tipoAtendimento.focus();
                             }, 200);
+
+
                         }
                         else {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais")
@@ -192,24 +196,22 @@ if (targetElementMenuFinalizar) {
                                 botaoAdicionarProced.click();
                                 console.log("botao add procedimento clicado");
                             }, 100);
+
+                            setTimeout(() => {
+                                tipoAtendimento.click();
+                                tipoAtendimento.focus();
+                                tipoAtendimento.value = "5";
+                            }, 300);
+
+                            setTimeout(() => {
+                                botaoAdicionarProced.click();
+                                console.log("botao add procedimento clicado - 2");
+                            }, 400);
                         }
                         else {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais");
                         }
                     });
-
-                    // Adiciona o EventListener ao botão após o carregamento do DOM
-                    document.addEventListener('DOMContentLoaded', function() {
-                        //Adiciona o EventListener ao botão
-                        botaoAdicionarProced.addEventListener('click', addProcedimentoClicado);
-                    });
-
-                    function addProcedimentoClicado(){
-                        setTimeout(() => {
-                        alert("botao add proc clicado");
-                        console.log("botao add proc clicado");
-                        }, 1000);
-                    }
 
                     //document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"). value = "5"; // Tipoatendimento
                     document.getElementById("pec_atendimento_soap_esu_conduta_ids_7").checked = true; // Checkbox retorno programado  condinuado
