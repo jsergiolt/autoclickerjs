@@ -206,7 +206,10 @@ if (targetElementMenuFinalizar) {
                      // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
                      waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id", (tipoAtend) => {
                         tipoAtend.focus();
-                        tipoAtend.value = "5";
+                        setTimeout(() => {
+                            tipoAtend.value = "5";
+                            console.log("Valor '5' digitado no campo.");
+                        }, 100);
                         botaoAdicionarProced.click();
 
                         // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
