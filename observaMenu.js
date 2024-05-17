@@ -171,7 +171,7 @@ if (targetElementMenuFinalizar) {
                             setTimeout(() => {
                                 campoProcedimento.click();
                                 campoProcedimento.focus();
-                            }, 100);
+                            }, 500);
                         }
                         else {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais")
