@@ -198,20 +198,32 @@ if (targetElementMenuFinalizar) {
                             // Se ja tiver Procedimento inserido nao fazer nada
                             try {
                                 // Aguarda 1 segundo e clica no botão
-                                await new Promise(resolve => setTimeout(resolve, 1000));
+                                await new Promise(resolve => setTimeout(resolve, 100));
                                 botaoAdicionarProced.click();
                                 console.log("botão adicionar procedimento clicado");
                     
                                 // Aguarda mais 1 segundo e atualiza o tipo de atendimento
-                                await new Promise(resolve => setTimeout(resolve, 1000));
+                                await new Promise(resolve => setTimeout(resolve, 100));
                                 tipoAtendimento.click();
                                 tipoAtendimento.focus();
                                 tipoAtendimento.value = "5";
                     
                                 // Aguarda mais 1 segundo e clica no próximo campo
-                                await new Promise(resolve => setTimeout(resolve, 1000));
+                                await new Promise(resolve => setTimeout(resolve, 100));
                                 document.getElementById("lookup_key_pec_atendimento_soap_profissional_adicional").focus();
                                 console.log("clicou em outro campo");
+
+                                // Aguarda mais 1 segundo e clica no soap
+                                await new Promise(resolve => setTimeout(resolve, 100));
+                                targetElementMenuSoap.focus();
+                                targetElementMenuSoap.click();
+                                console.log("clicou no soap");
+
+                        
+                                // Aguarda mais 1 segundo e clica no campo avaliacao
+                                await new Promise(resolve => setTimeout(resolve, 100));
+                                document.getElementById("pec_atendimento_soap_avaliacao").focus();
+                                console.log("clicou no campo avaliacao");
                             } catch (error) {
                                 console.error("Erro durante a adição do procedimento:", error);
                             }
