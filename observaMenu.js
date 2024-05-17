@@ -204,6 +204,7 @@ if (targetElementMenuFinalizar) {
                             }, 300);
 
                             setTimeout(() => {
+                                targetElementMenuSoap.focus();
                                 targetElementMenuSoap.click();
                                 console.log("clicou denovo no menu soap");
                             }, 400);
