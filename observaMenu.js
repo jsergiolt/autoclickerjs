@@ -198,6 +198,21 @@ if (targetElementMenuFinalizar) {
                         }
                     });
 
+                    // Adiciona o EventListener ao botão após o carregamento do DOM
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Seleciona o botão pelo id
+                        var botao = document.getElementById("pec_atendimento_soap_procedimentos_finalizacao_button");
+                        
+                        // Adiciona o EventListener ao botão
+                        botao.addEventListener('click', addProcedimentoClicado);
+                    });
+
+                    function addProcedimentoClicado(){
+                        setTimeout(() => {
+                        alert("oi");
+                        }, 1000);
+                    }
+
                     //document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"). value = "5"; // Tipoatendimento
                     document.getElementById("pec_atendimento_soap_esu_conduta_ids_7").checked = true; // Checkbox retorno programado  condinuado
 
