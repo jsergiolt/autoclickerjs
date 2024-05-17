@@ -167,11 +167,12 @@ if (targetElementMenuFinalizar) {
                                 console.log("Valor '0301010064' digitado no campo.");
                             }, 100);
 
-                            const campoProcedimento = document.getElementById("select2-chosen-23");
+                            ////*[@id="lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"]
+                            const tipoAtendimento = document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id");
                             setTimeout(() => {
-                                campoProcedimento.click();
-                                campoProcedimento.focus();
-                            }, 500);
+                                tipoAtendimento.click();
+                                tipoAtendimento.focus();
+                            }, 100);
                         }
                         else {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais")
