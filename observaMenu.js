@@ -206,7 +206,8 @@ if (targetElementMenuFinalizar) {
 
                     function addProcedimentoClicado(){
                         setTimeout(() => {
-                        alert("oi");
+                        alert("botao add proc clicado");
+                        console.log("botao add proc clicado");
                         }, 1000);
                     }
 
