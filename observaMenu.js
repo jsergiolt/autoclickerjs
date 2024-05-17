@@ -191,15 +191,9 @@ if (targetElementMenuFinalizar) {
                                 botaoAdicionarProced.click();
                                 console.log("botao add procedimento clicado");
                             }, 100);
-
-                            /*const campoProcedimento = document.getElementById("select2-chosen-23");
-                            setTimeout(() => {
-                                //campoAvaliacao.click();
-                                campoProcedimento.focus();
-                            }, 100);*/
                         }
                         else {
-                            console.log("Ja tem Procedimento adicionado, nao adicionar mais")
+                            console.log("Ja tem Procedimento adicionado, nao adicionar mais");
                         }
                     });
 
