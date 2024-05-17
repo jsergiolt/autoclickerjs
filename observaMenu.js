@@ -203,11 +203,7 @@ if (targetElementMenuFinalizar) {
                                 tipoAtendimento.value = "5";
                             }, 300);
 
-                            setTimeout(() => {
-                                document.getElementById("select2-drop-mask").focus();//foca no campo tipo atendimento
-                                document.getElementById("select2-drop-mask").click();//clica no campo tipo atendimento
-                                console.log("campo tipo atendimento clicado em foco");
-                            }, 500);
+                            targetElementMenuSoap.click();
                         }
                         else {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais");
