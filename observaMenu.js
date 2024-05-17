@@ -81,6 +81,7 @@ if (targetElement) {
 
                             const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
                             setTimeout(() => {
+                                campoAvaliacao.focus();
                                 campoAvaliacao.click();
                             }, 100);
                         }
