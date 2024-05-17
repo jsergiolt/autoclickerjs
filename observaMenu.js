@@ -205,6 +205,7 @@ if (targetElementMenuFinalizar) {
 
                             setTimeout(() => {
                                 targetElementMenuSoap.click();
+                                console.log("clicou denovo no menu soap");
                             }, 400);
                             
                         }
