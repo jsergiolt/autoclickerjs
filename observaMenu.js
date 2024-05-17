@@ -210,7 +210,7 @@ if (targetElementMenuFinalizar) {
                     
                                 // Aguarda mais 1 segundo e clica no próximo campo
                                 await new Promise(resolve => setTimeout(resolve, 1000));
-                                document.getElementById("lookup_key_pec_atendimento_soap_profissional_adicional").click();
+                                document.getElementById("lookup_key_pec_atendimento_soap_profissional_adicional").focus();
                                 console.log("clicou em outro campo");
                             } catch (error) {
                                 console.error("Erro durante a adição do procedimento:", error);
