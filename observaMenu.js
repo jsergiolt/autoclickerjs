@@ -190,7 +190,25 @@ if (targetElementMenuFinalizar) {
                             setTimeout(() => {
                                 botaoAdicionarProced.click();
                                 console.log("botao add procedimento clicado");
-                            }, 500);
+                            }, 100);
+
+                             // Aguardar aparecer o elemento codProcedimento e preencher com 5
+                            waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id", (tipoAtend) => {
+                                tipoAtend.focus();
+                                setTimeout(() => {
+                                    tipoAtend.value = "5";
+                                    console.log("Valor '5' digitado no campo.");
+                                }, 500);
+                                botaoAdicionarProced.click();
+
+                                // Aguardar CHECKBOD E MARCA
+                                waitForElementToBeVisible("#pec_atendimento_soap_esu_conduta_ids_7", (cbRetorno) => {
+                                    cbRetorno.focus();
+                                    setTimeout(() => {
+                                        cbRetorno.checked = true;
+                                    }, 1000);
+                                });
+                            });
 
                             /*const campoProcedimento = document.getElementById("select2-chosen-23");
                             setTimeout(() => {
@@ -203,21 +221,7 @@ if (targetElementMenuFinalizar) {
                         }
                     });
 
-                     // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
-                     waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id", (tipoAtend) => {
-                        tipoAtend.focus();
-                        setTimeout(() => {
-                            tipoAtend.value = "5";
-                            console.log("Valor '5' digitado no campo.");
-                        }, 100);
-                        botaoAdicionarProced.click();
-
-                        // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
-                        waitForElementToBeVisible("#pec_atendimento_soap_esu_conduta_ids_7", (cbRetorno) => {
-                            cbRetorno.focus();
-                            cbRetorno.checked = true;
-                        });
-                    });
+                    
 
                     //document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"). value = "5"; // Tipoatendimento
                     document.getElementById("pec_atendimento_soap_esu_conduta_ids_7").checked = true; // Checkbox retorno programado  condinuado
