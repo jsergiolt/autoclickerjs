@@ -173,7 +173,7 @@ if (targetElementMenuFinalizar) {
                             setTimeout(() => {
                                 tipoAtendimento.click();
                                 tipoAtendimento.focus();
-                            }, 100);
+                            }, 200);
                         }
                         else {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais")
@@ -192,24 +192,6 @@ if (targetElementMenuFinalizar) {
                                 console.log("botao add procedimento clicado");
                             }, 100);
 
-                             // Aguardar aparecer o elemento codProcedimento e preencher com 5
-                            waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id", (tipoAtend) => {
-                                tipoAtend.focus();
-                                setTimeout(() => {
-                                    tipoAtend.value = "5";
-                                    console.log("Valor '5' digitado no campo.");
-                                }, 500);
-                                botaoAdicionarProced.click();
-
-                                // Aguardar CHECKBOD E MARCA
-                                waitForElementToBeVisible("#pec_atendimento_soap_esu_conduta_ids_7", (cbRetorno) => {
-                                    cbRetorno.focus();
-                                    setTimeout(() => {
-                                        cbRetorno.checked = true;
-                                    }, 1000);
-                                });
-                            });
-
                             /*const campoProcedimento = document.getElementById("select2-chosen-23");
                             setTimeout(() => {
                                 //campoAvaliacao.click();
@@ -220,8 +202,6 @@ if (targetElementMenuFinalizar) {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais")
                         }
                     });
-
-                    
 
                     //document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"). value = "5"; // Tipoatendimento
                     document.getElementById("pec_atendimento_soap_esu_conduta_ids_7").checked = true; // Checkbox retorno programado  condinuado
