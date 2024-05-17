@@ -59,16 +59,16 @@ function numeroElementosTR(idTabela) {
 
 
 // Encontre o elemento
-const targetElement = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[3]");
+const targetElementMenuSoap = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[3]");
 
-if (targetElement) {
+if (targetElementMenuSoap) {
     // Crie um MutationObserver
     const observer = new MutationObserver((mutationsList) => {
         for (let mutation of mutationsList) {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                console.log('Classe alterada:', targetElement.className);
+                console.log('Classe alterada:', targetElementMenuSoap.className);
                 // Verifique se a classe 'active' foi adicionada
-                if (targetElement.classList.contains('active')) {
+                if (targetElementMenuSoap.classList.contains('active')) {
                     console.log('A classe "active" foi adicionada ao item menu soap');
 
                     // Aguardar aparecer o elemento campoCid e preencher com Z00
@@ -130,9 +130,91 @@ if (targetElement) {
     const config = { attributes: true };
 
     // Inicie o observer no elemento alvo
-    observer.observe(targetElement, config);
+    observer.observe(targetElementMenuSoap, config);
 
     console.log('Observando mudanças na classe do item menu soap');
+} else {
+    console.log('Elemento do item menu soap não encontrado para o XPath fornecido.');
+}
+
+
+
+
+
+
+
+
+// Encontre o elemento
+const targetElementMenuFinalizar = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[13]"); // Menu finalizar atendimento
+
+if (targetElementMenuFinalizar) {
+    // Crie um MutationObserver
+    const observer = new MutationObserver((mutationsList) => {
+        for (let mutation of mutationsList) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                console.log('Classe alterada:', targetElementMenuFinalizar.className);
+                // Verifique se a classe 'active' foi adicionada
+                if (targetElementMenuFinalizar.classList.contains('active')) {
+                    console.log('A classe "active" foi adicionada ao item menu finalizar atendimento');
+
+                    // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
+                    waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_finalizacao_procedimento", (codProcedimento) => {
+                        // Se ja tiver Procedimento inserido nao fazer nada
+                        if (numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table") == 1) {
+                            codProcedimento.focus();
+                            setTimeout(() => {
+                                codProcedimento.value = "0301010064";
+                                console.log("Valor '0301010064' digitado no campo.");
+                            }, 100);
+
+                            const campoProcedimento = document.getElementById("select2-chosen-23");
+                            setTimeout(() => {
+                                //campoProcedimento.click();
+                                campoProcedimento.focus();
+                            }, 100);
+                        }
+                        else {
+                            console.log("Ja tem Procedimento adicionado, nao adicionar mais")
+                        }
+                    });
+
+                    // Aguarda aparecer a descrição do procedimento e clica no botão de +
+                    botaoAdicionarProced = document.getElementById("pec_atendimento_soap_procedimentos_finalizacao_button");
+                    waitForTextChange("#select2-chosen-23", (innerText) => {
+                        // Se ja tiver Procedimento inserido nao fazer nada
+                        if (numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table") == 1) {
+                            console.log("Descrição Procedimento alterado para:", innerText);
+                            botaoAdicionarProced.focus();
+                            setTimeout(() => {
+                                botaoAdicionarProced.click();
+                                console.log("botao add procedimento clicado");
+                            }, 100);
+
+                            const campoProcedimento = document.getElementById("select2-chosen-23");
+                            setTimeout(() => {
+                                //campoAvaliacao.click();
+                                campoAvaliacao.focus();
+                            }, 100);
+                        }
+                        else {
+                            console.log("Ja tem Procedimento adicionado, nao adicionar mais")
+                        }
+                    });
+
+                } else {
+                    console.log('A classe "active" foi removida do item menu finalizar atendimento');
+                }
+            }
+        }
+    });
+
+    // Configuração do observer: observar mudanças nos atributos
+    const config = { attributes: true };
+
+    // Inicie o observer no elemento alvo
+    observer.observe(targetElementMenuFinalizar, config);
+
+    console.log('Observando mudanças na classe do item menu finalizar atendimento');
 } else {
     console.log('Elemento do item menu soap não encontrado para o XPath fornecido.');
 }
