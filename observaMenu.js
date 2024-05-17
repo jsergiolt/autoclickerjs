@@ -203,7 +203,10 @@ if (targetElementMenuFinalizar) {
                                 tipoAtendimento.value = "5";
                             }, 300);
 
-                            targetElementMenuSoap.click();
+                            setTimeout(() => {
+                                targetElementMenuSoap.click();
+                            }, 400);
+                            
                         }
                         else {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais");
