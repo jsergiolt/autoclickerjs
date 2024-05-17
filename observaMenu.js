@@ -158,6 +158,8 @@ if (targetElementMenuFinalizar) {
                     console.log('A classe "active" foi adicionada ao item menu finalizar atendimento');
 
                     // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
+                    ////*[@id="lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"]
+                    const tipoAtendimento = document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id");
                     waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_finalizacao_procedimento", (codProcedimento) => {
                         // Se ja tiver Procedimento inserido nao fazer nada
                         if (numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table") == 1) {
@@ -167,9 +169,8 @@ if (targetElementMenuFinalizar) {
                                 console.log("Valor '0301010064' digitado no campo.");
                             }, 100);
 
-                            ////*[@id="lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"]
-                            const tipoAtendimento = document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id");
-
+                            
+                            // Clica fora do campo só para carregar a descrição do procedimento
                             setTimeout(() => {
                                 tipoAtendimento.click();
                                 tipoAtendimento.focus();
@@ -181,12 +182,12 @@ if (targetElementMenuFinalizar) {
                     });
 
                     // Aguarda aparecer a descrição do procedimento e clica no botão de +
-                    botaoAdicionarProced = document.getElementById("pec_atendimento_soap_procedimentos_finalizacao_button");
+                    const botaoAdicionarProced = document.getElementById("pec_atendimento_soap_procedimentos_finalizacao_button");
                     waitForTextChange("#select2-chosen-23", (innerText) => {
                         // Se ja tiver Procedimento inserido nao fazer nada
                         if (numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table") == 1) {
                             console.log("Descrição Procedimento alterado para:", innerText);
-                            botaoAdicionarProced.focus();
+                            //botaoAdicionarProced.focus();
                             setTimeout(() => {
                                 botaoAdicionarProced.click();
                                 console.log("botao add procedimento clicado");
