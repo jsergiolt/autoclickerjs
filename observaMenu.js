@@ -207,6 +207,13 @@ if (targetElementMenuFinalizar) {
                      waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id", (tipoAtend) => {
                         tipoAtend.focus();
                         tipoAtend.value = "5";
+                        botaoAdicionarProced.click();
+
+                        // Aguardar aparecer o elemento codProcedimento e preencher com 0301010064
+                        waitForElementToBeVisible("#pec_atendimento_soap_esu_conduta_ids_7", (cbRetorno) => {
+                            cbRetorno.focus();
+                            cbRetorno.checked = true;
+                        });
                     });
 
                     //document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"). value = "5"; // Tipoatendimento
