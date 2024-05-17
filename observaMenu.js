@@ -187,28 +187,34 @@ if (targetElementMenuFinalizar) {
 
                     // Aguarda aparecer a descrição do procedimento e clica no botão de +
                     const botaoAdicionarProced = document.getElementById("pec_atendimento_soap_procedimentos_finalizacao_button");
+                    let procedimentoAdicionado = false; // Flag para verificar se o procedimento já foi adicionado
+
                     waitForTextChange("#select2-chosen-23", async (innerText) => {
                         console.log("Número de elementos TR antes de adicionar:", numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table"));
-
-                        // Se ja tiver Procedimento inserido nao fazer nada
-                        try {
-                            // Aguarda 1 segundo e clica no botão
-                            await new Promise(resolve => setTimeout(resolve, 1000));
-                            botaoAdicionarProced.click();
-                            console.log("botão adicionar procedimento clicado");
-                
-                            // Aguarda mais 1 segundo e atualiza o tipo de atendimento
-                            await new Promise(resolve => setTimeout(resolve, 1000));
-                            tipoAtendimento.click();
-                            tipoAtendimento.focus();
-                            tipoAtendimento.value = "5";
-                
-                            // Aguarda mais 1 segundo e clica no próximo campo
-                            await new Promise(resolve => setTimeout(resolve, 1000));
-                            document.getElementById("lookup_key_pec_atendimento_soap_profissional_adicional").click();
-                            console.log("clicou em outro campo");
-                        } catch (error) {
-                            console.error("Erro durante a adição do procedimento:", error);
+                        if (!procedimentoAdicionado && numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table") == 1) {
+                            console.log("Descrição Procedimento alterado para:", innerText);
+                            procedimentoAdicionado = true; // Marca que o procedimento foi adicionado
+                    
+                            // Se ja tiver Procedimento inserido nao fazer nada
+                            try {
+                                // Aguarda 1 segundo e clica no botão
+                                await new Promise(resolve => setTimeout(resolve, 1000));
+                                botaoAdicionarProced.click();
+                                console.log("botão adicionar procedimento clicado");
+                    
+                                // Aguarda mais 1 segundo e atualiza o tipo de atendimento
+                                await new Promise(resolve => setTimeout(resolve, 1000));
+                                tipoAtendimento.click();
+                                tipoAtendimento.focus();
+                                tipoAtendimento.value = "5";
+                    
+                                // Aguarda mais 1 segundo e clica no próximo campo
+                                await new Promise(resolve => setTimeout(resolve, 1000));
+                                document.getElementById("lookup_key_pec_atendimento_soap_profissional_adicional").click();
+                                console.log("clicou em outro campo");
+                            } catch (error) {
+                                console.error("Erro durante a adição do procedimento:", error);
+                            }
                         }
 
                         /*
