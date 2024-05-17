@@ -169,9 +169,14 @@ if (targetElementMenuFinalizar) {
 
                             ////*[@id="lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"]
                             const tipoAtendimento = document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id");
+                            const cbRetorno = document.getElementById("pec_atendimento_soap_esu_conduta_ids_7");
                             setTimeout(() => {
                                 tipoAtendimento.click();
                                 tipoAtendimento.focus();
+
+                                tipoAtendimento.value = "5";
+
+                                cbRetorno.checked = true;
                             }, 100);
                         }
                         else {
@@ -201,6 +206,8 @@ if (targetElementMenuFinalizar) {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais")
                         }
                     });
+
+                    
 
                 } else {
                     console.log('A classe "active" foi removida do item menu finalizar atendimento');
