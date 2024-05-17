@@ -188,7 +188,30 @@ if (targetElementMenuFinalizar) {
                     // Aguarda aparecer a descrição do procedimento e clica no botão de +
                     const botaoAdicionarProced = document.getElementById("pec_atendimento_soap_procedimentos_finalizacao_button");
                     waitForTextChange("#select2-chosen-23", (innerText) => {
+                        console.log("Número de elementos TR antes de adicionar:", numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table"));
+
                         // Se ja tiver Procedimento inserido nao fazer nada
+                        try {
+                            // Aguarda 1 segundo e clica no botão
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                            botaoAdicionarProced.click();
+                            console.log("botão adicionar procedimento clicado");
+                
+                            // Aguarda mais 1 segundo e atualiza o tipo de atendimento
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                            tipoAtendimento.click();
+                            tipoAtendimento.focus();
+                            tipoAtendimento.value = "5";
+                
+                            // Aguarda mais 1 segundo e clica no próximo campo
+                            await new Promise(resolve => setTimeout(resolve, 1000));
+                            document.getElementById("lookup_key_pec_atendimento_soap_profissional_adicional").click();
+                            console.log("clicou em outro campo");
+                        } catch (error) {
+                            console.error("Erro durante a adição do procedimento:", error);
+                        }
+
+                        /*
                         if (numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table") == 1) {
                             console.log("Descrição Procedimento alterado para:", innerText);
                             //botaoAdicionarProced.focus();
@@ -212,7 +235,7 @@ if (targetElementMenuFinalizar) {
                         }
                         else {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais");
-                        }
+                        }*/
                     });
 
                     //document.getElementById("lookup_key_pec_atendimento_soap_esu_tipo_atendimento_id"). value = "5"; // Tipoatendimento
