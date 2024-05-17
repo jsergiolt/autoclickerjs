@@ -187,7 +187,7 @@ if (targetElementMenuFinalizar) {
 
                     // Aguarda aparecer a descrição do procedimento e clica no botão de +
                     const botaoAdicionarProced = document.getElementById("pec_atendimento_soap_procedimentos_finalizacao_button");
-                    waitForTextChange("#select2-chosen-23", (innerText) => {
+                    waitForTextChange("#select2-chosen-23", async (innerText) => {
                         console.log("Número de elementos TR antes de adicionar:", numeroElementosTR("pec_atendimento_soap_procedimentos_finalizacao_table"));
 
                         // Se ja tiver Procedimento inserido nao fazer nada
