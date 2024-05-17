@@ -200,11 +200,8 @@ if (targetElementMenuFinalizar) {
 
                     // Adiciona o EventListener ao botão após o carregamento do DOM
                     document.addEventListener('DOMContentLoaded', function() {
-                        // Seleciona o botão pelo id
-                        var botao = document.getElementById("pec_atendimento_soap_procedimentos_finalizacao_button");
-                        
-                        // Adiciona o EventListener ao botão
-                        botao.addEventListener('click', addProcedimentoClicado);
+                        //Adiciona o EventListener ao botão
+                        botaoAdicionarProced.addEventListener('click', addProcedimentoClicado);
                     });
 
                     function addProcedimentoClicado(){
