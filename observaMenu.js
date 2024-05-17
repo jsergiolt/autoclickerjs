@@ -190,11 +190,11 @@ if (targetElementMenuFinalizar) {
                                 console.log("botao add procedimento clicado");
                             }, 100);
 
-                            const campoProcedimento = document.getElementById("select2-chosen-23");
+                            /*const campoProcedimento = document.getElementById("select2-chosen-23");
                             setTimeout(() => {
                                 //campoAvaliacao.click();
-                                campoAvaliacao.focus();
-                            }, 100);
+                                campoProcedimento.focus();
+                            }, 100);*/
                         }
                         else {
                             console.log("Ja tem Procedimento adicionado, nao adicionar mais")
