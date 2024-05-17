@@ -80,9 +80,13 @@ if (targetElement) {
                             }, 100);
 
                             const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
-                            setTimeout(() => {
+                            setTimeout(() => { 
+                                campoAvaliacao.click();
                                 campoAvaliacao.focus();
-                                //campoAvaliacao.click();
+                                // Até aqui funcionou
+
+                                // Ideia para continuar = daqui mesmo já clicar no campo finalizar atendimento [mas fazer outra lógica para ele ficar observando]
+                                // Falta também fazer a mesma lógica para mudar o CBO
                             }, 100);
                         }
                         else{
