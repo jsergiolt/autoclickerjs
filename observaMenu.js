@@ -57,92 +57,92 @@ function numeroElementosTR(idTabela) {
 }
 
 
-function preencheCampos(){
-    // Encontre o elemento
-    const targetElement = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[3]");
 
-    if (targetElement) {
-        // Crie um MutationObserver
-        const observer = new MutationObserver((mutationsList) => {
-            for (let mutation of mutationsList) {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    console.log('Classe alterada:', targetElement.className);
-                    // Verifique se a classe 'active' foi adicionada
-                    if (targetElement.classList.contains('active')) {
-                        console.log('A classe "active" foi adicionada ao item menu soap');
+// Encontre o elemento
+const targetElement = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[3]");
 
-                        // Aguardar aparecer o elemento campoCid e preencher com Z00
-                        waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_avaliacao_cid", (campoCodigoCid) => {
-                            // Se ja tiver CID inserido nao fazer nada
-                            if (numeroElementosTR("pec_atendimento_soap_avaliacao_cid_table") == 1){
-                                campoCodigoCid.focus();
-                                setTimeout(() => {
-                                    campoCodigoCid.value = "Z00";
-                                    console.log("Valor 'Z00' digitado no campo.");
-                                }, 100);
+if (targetElement) {
+    // Crie um MutationObserver
+    const observer = new MutationObserver((mutationsList) => {
+        for (let mutation of mutationsList) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                console.log('Classe alterada:', targetElement.className);
+                // Verifique se a classe 'active' foi adicionada
+                if (targetElement.classList.contains('active')) {
+                    console.log('A classe "active" foi adicionada ao item menu soap');
 
-                                const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
-                                setTimeout(() => { 
-                                    campoAvaliacao.click();
-                                    campoAvaliacao.focus();
-                                }, 100);
-                            }
-                            else{
-                                console.log("Ja tem cid adicionado, nao adicionar mais")
-                            }                       
-                        });                 
-                        
-                        // Aguarda aparecer a descrição do CID e clica no botão de +
-                        botaoAdicionarCid = document.getElementById("pec_atendimento_soap_avaliacao_add_fields_button");
-                        waitForTextChange("#select2-chosen-9", (innerText) => {
-                            // Se ja tiver CID inserido nao fazer nada
-                            if (numeroElementosTR("pec_atendimento_soap_avaliacao_cid_table") == 1){
-                                console.log("Descrição CID alterado para:", innerText);
-                                botaoAdicionarCid.focus();
-                                setTimeout(() => {
-                                    botaoAdicionarCid.click();
-                                    console.log("Valor 'Z00' digitado no campo.");
-                                }, 100);
+                    // Aguardar aparecer o elemento campoCid e preencher com Z00
+                    waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_avaliacao_cid", (campoCodigoCid) => {
+                        // Se ja tiver CID inserido nao fazer nada
+                        if (numeroElementosTR("pec_atendimento_soap_avaliacao_cid_table") == 1) {
+                            campoCodigoCid.focus();
+                            setTimeout(() => {
+                                campoCodigoCid.value = "Z00";
+                                console.log("Valor 'Z00' digitado no campo.");
+                            }, 100);
 
-                                const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
-                                setTimeout(() => { 
-                                    campoAvaliacao.click();
-                                    campoAvaliacao.focus();
-                                    // Até aqui funcionou
+                            const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
+                            setTimeout(() => {
+                                campoAvaliacao.click();
+                                campoAvaliacao.focus();
+                            }, 100);
+                        }
+                        else {
+                            console.log("Ja tem cid adicionado, nao adicionar mais")
+                        }
+                    });
 
-                                    // Ideia para continuar = daqui mesmo já clicar no campo finalizar atendimento [mas fazer outra lógica para ele ficar observando]
-                                    // Falta também fazer a mesma lógica para mudar o CBO
-                                }, 100);
-                            }
-                            else{
-                                console.log("Ja tem cid adicionado, nao adicionar mais")
-                            }
-                        });
+                    // Aguarda aparecer a descrição do CID e clica no botão de +
+                    botaoAdicionarCid = document.getElementById("pec_atendimento_soap_avaliacao_add_fields_button");
+                    waitForTextChange("#select2-chosen-9", (innerText) => {
+                        // Se ja tiver CID inserido nao fazer nada
+                        if (numeroElementosTR("pec_atendimento_soap_avaliacao_cid_table") == 1) {
+                            console.log("Descrição CID alterado para:", innerText);
+                            botaoAdicionarCid.focus();
+                            setTimeout(() => {
+                                botaoAdicionarCid.click();
+                                console.log("Valor 'Z00' digitado no campo.");
+                            }, 100);
 
-                    } else {
-                        console.log('A classe "active" foi removida do item menu soap');
-                    }
+                            const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
+                            setTimeout(() => {
+                                campoAvaliacao.click();
+                                campoAvaliacao.focus();
+                                // Até aqui funcionou
+
+                                // Ideia para continuar = daqui mesmo já clicar no campo finalizar atendimento [mas fazer outra lógica para ele ficar observando]
+                                // Falta também fazer a mesma lógica para mudar o CBO
+                            }, 100);
+                        }
+                        else {
+                            console.log("Ja tem cid adicionado, nao adicionar mais")
+                        }
+                    });
+
+                } else {
+                    console.log('A classe "active" foi removida do item menu soap');
                 }
             }
-        });
+        }
+    });
 
-        // Configuração do observer: observar mudanças nos atributos
-        const config = { attributes: true };
+    // Configuração do observer: observar mudanças nos atributos
+    const config = { attributes: true };
 
-        // Inicie o observer no elemento alvo
-        observer.observe(targetElement, config);
+    // Inicie o observer no elemento alvo
+    observer.observe(targetElement, config);
 
-        console.log('Observando mudanças na classe do item menu soap');
-    } else {
-        console.log('Elemento do item menu soap não encontrado para o XPath fornecido.');
-    }
+    console.log('Observando mudanças na classe do item menu soap');
+} else {
+    console.log('Elemento do item menu soap não encontrado para o XPath fornecido.');
 }
 
 
+/*
 // Adiciona um EventListener para detectar cliques em links
 document.addEventListener('click', function(event) {
     // Verifica se o clique foi em um link
     if (event.target.tagName === 'a' || event.target.tagName === 'li' || event.target.tagName === 'input') {
         preencheCampos();
     }
-});
+});*/
