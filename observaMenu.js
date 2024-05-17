@@ -195,19 +195,19 @@ if (targetElementMenuFinalizar) {
                             setTimeout(() => {
                                 botaoAdicionarProced.click();
                                 console.log("botao add procedimento clicado");
-                            }, 100);
+                            }, 1000);
 
                             setTimeout(() => {
                                 tipoAtendimento.click();
                                 tipoAtendimento.focus();
                                 tipoAtendimento.value = "5";
-                            }, 300);
+                            }, 2000);
 
                             setTimeout(() => { //<input type="text" name="lookup_key[pec_atendimento_soap[profissional_adicional]]" id="lookup_key_pec_atendimento_soap_profissional_adicional" value="" class="form-control lookup-edit-key wmObject wmSearch wmSearchResult wmInsert wmEdit fwk-lookup-edit-v3" data-toggle="tooltip" data-placement="top" data-title="Profissional" data-original-title="" title="" data-bs.tooltip="[object Object]">
-                                document.getElementById("lookup_key_pec_atendimento_soap_profissional_adicional").focus();
+                                //document.getElementById("lookup_key_pec_atendimento_soap_profissional_adicional").focus();
                                 document.getElementById("lookup_key_pec_atendimento_soap_profissional_adicional").click();
                                 console.log("clicou em outro campo");
-                            }, 500);
+                            }, 3000);
                             
                         }
                         else {
