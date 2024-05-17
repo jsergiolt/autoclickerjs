@@ -78,8 +78,11 @@ if (targetElement) {
                                 campoCodigoCid.value = "Z00";
                                 console.log("Valor 'Z00' digitado no campo.");
                             }, 100);
+
                             const campoAvaliacao = document.getElementById("pec_atendimento_soap_avaliacao");
-                            campoAvaliacao.click();
+                            setTimeout(() => {
+                                campoAvaliacao.click();
+                            }, 100);
                         }
                         else{
                             console.log("Ja tem cid adicionado, nao adicionar mais")
