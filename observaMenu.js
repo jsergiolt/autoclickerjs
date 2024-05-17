@@ -169,7 +169,7 @@ if (targetElementMenuFinalizar) {
 
                             const campoProcedimento = document.getElementById("select2-chosen-23");
                             setTimeout(() => {
-                                //campoProcedimento.click();
+                                campoProcedimento.click();
                                 campoProcedimento.focus();
                             }, 100);
                         }
