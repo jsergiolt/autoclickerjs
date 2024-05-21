@@ -78,6 +78,17 @@ if(targetElementMenuFolhaDeRosto && targetElementMenuFolhaDeRosto.classList.cont
             }
         }
     });  
+    // Aguardar aparecer o elemento hmaTextArea e adiciona a ele o auto size
+    waitForElementToBeVisible("#upa_atendimento_amb_anamnese_deshma", (hmaTextArea) => {
+        if(hmaTextArea){
+            if (hmaTextArea) {
+                setTimeout(() => {
+                    hmaTextArea.classList.add('fwk-textarea-auto-size');
+                    console.log("Adicionado auto size a hmaTextArea");
+                }, 100);
+            }
+        }
+    });  
 }
 
 if (targetElementMenuSoap) {
