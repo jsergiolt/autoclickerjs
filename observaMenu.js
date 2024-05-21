@@ -60,6 +60,14 @@ function numeroElementosTR(idTabela) {
 
 // Encontre o elemento
 const targetElementMenuSoap = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[3]");
+const codigoEsp = document.getElementById("lookup_key_pec_atendimento_soap_codespecialidade");
+
+if(codigoEsp){
+    codigoEsp.focus();
+    if (codigoEsp && codigoEsp.value !== "225142") {
+        setTimeout(codigoEsp.value = "225142", 250);
+    }
+}
 
 if (targetElementMenuSoap) {
     // Crie um MutationObserver
