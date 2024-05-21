@@ -60,8 +60,25 @@ function numeroElementosTR(idTabela) {
 
 // Encontre o elemento
 const targetElementMenuSoap = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[3]");
+const targetElementMenuFolhaDeRosto = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[1]");
 //const codigoEsp = document.getElementById("lookup_key_pec_atendimento_soap_codespecialidade");
 
+if(targetElementMenuFolhaDeRosto && targetElementMenuFolhaDeRosto.classList.contains('active')){
+    // Se estiver na tela de atendimento da UPA já preenche o campo finalização com o código 10
+    // Aguardar aparecer o elemento codigoFinalizacao e preencher com 10
+    waitForElementToBeVisible("#lookup_key_upa_atendimento_id_motivofinalizacao", (codigoFinalizacao) => {
+        if(codigoFinalizacao){
+            //codigoFinalizacao.focus();
+            if (codigoFinalizacao && codigoFinalizacao.value !== "10") {
+                setTimeout(() => {
+                    codigoFinalizacao.focus();
+                    codigoFinalizacao.value = "10"
+                    console.log("Valor 10 digitado no campo.");
+                }, 100);
+            }
+        }
+    });  
+}
 
 if (targetElementMenuSoap) {
     // Crie um MutationObserver
