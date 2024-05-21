@@ -60,14 +60,8 @@ function numeroElementosTR(idTabela) {
 
 // Encontre o elemento
 const targetElementMenuSoap = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[3]");
-const codigoEsp = document.getElementById("lookup_key_pec_atendimento_soap_codespecialidade");
+//const codigoEsp = document.getElementById("lookup_key_pec_atendimento_soap_codespecialidade");
 
-if(codigoEsp){
-    codigoEsp.focus();
-    if (codigoEsp && codigoEsp.value !== "225142") {
-        setTimeout(codigoEsp.value = "225142", 250);
-    }
-}
 
 if (targetElementMenuSoap) {
     // Crie um MutationObserver
@@ -78,6 +72,21 @@ if (targetElementMenuSoap) {
                 // Verifique se a classe 'active' foi adicionada
                 if (targetElementMenuSoap.classList.contains('active')) {
                     console.log('A classe "active" foi adicionada ao item menu soap');
+
+                    // Aguardar aparecer o elemento codigoEsp e preencher com 225142
+                    waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_codespecialidade", (codigoEsp) => {
+                        if(codigoEsp){
+                            //codigoEsp.focus();
+                            if (codigoEsp && codigoEsp.value !== "225142") {
+                                setTimeout(() => {
+                                    codigoEsp.focus();
+                                    codigoEsp.value = "225142"
+                                    console.log("Valor 225142 digitado no campo.");
+                                }, 100);
+                            }
+                        }
+                    });                    
+                    
 
                     // Aguardar aparecer o elemento campoCid e preencher com Z00
                     waitForElementToBeVisible("#lookup_key_pec_atendimento_soap_avaliacao_cid", (campoCodigoCid) => {
