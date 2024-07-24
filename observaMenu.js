@@ -83,7 +83,8 @@ if(targetElementMenuFolhaDeRosto && targetElementMenuFolhaDeRosto.classList.cont
         if(hmaTextArea){
             if (hmaTextArea) {
                 setTimeout(() => {
-                    hmaTextArea.classList.add('fwk-textarea-auto-size');
+                    //hmaTextArea.classList.add('fwk-textarea-auto-size');
+                    hmaTextArea.style.height = '300px';
                     console.log("Adicionado auto size a hmaTextArea");
                 }, 100);
             }
