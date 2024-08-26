@@ -63,8 +63,9 @@ const targetElementMenuSoap = getElementByXPath("//*[@id='sidebar']/div[1]/div[3
 const targetElementMenuFolhaDeRosto = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[1]");
 //const codigoEsp = document.getElementById("lookup_key_pec_atendimento_soap_codespecialidade");
 const campoDataAtestado = getElementByXPath("//*[@id='upa_atendimento_atestado_data']");
+const campoHoraAtestado = getElementByXPath("//*[@id='upa_atendimento_atestado_hora']");
 
-// Preencher o campo data do atestado com a data de hoje
+// Preencher o campo data do atestado com a data e hora de hoje
 waitForElementToBeVisible("#upa_atendimento_atestado_data", (upa_atendimento_atestado_data) => {
     
     // Função para formatar a data no formato dd/mm/aaaa
@@ -76,6 +77,7 @@ waitForElementToBeVisible("#upa_atendimento_atestado_data", (upa_atendimento_ate
         return `${dia}/${mes}/${ano}`;
     }
 
+
     // Obtendo a data atual formatada
     const dataAtualFormatada = obterDataAtual();
 
@@ -86,6 +88,27 @@ waitForElementToBeVisible("#upa_atendimento_atestado_data", (upa_atendimento_ate
             console.log(`Valor ${dataAtualFormatada} digitado no campo.`);
         }, 100);
     }
+
+    waitForElementToBeVisible("#upa_atendimento_atestado_hora", (upa_atendimento_atestado_hora) => {
+        
+        // Função para formatar a hora no formato hh:mm
+        function obterHoraAtual() {
+            const data = new Date();
+            const horas = String(data.getHours()).padStart(2, '0');
+            const minutos = String(data.getMinutes()).padStart(2, '0');
+            return `${horas}:${minutos}`;
+        }
+
+        const horaAtualFormatada = obterHoraAtual();
+
+        if (upa_atendimento_atestado_hora.value !== horaAtualFormatada) {
+            setTimeout(() => {
+                upa_atendimento_atestado_hora.focus();
+                upa_atendimento_atestado_hora.value = horaAtualFormatada;
+                console.log(`Valor ${horaAtualFormatada} digitado no campo.`);
+            }, 100);
+        }
+    });
 });  
 
 if(targetElementMenuFolhaDeRosto && targetElementMenuFolhaDeRosto.classList.contains('active')){
