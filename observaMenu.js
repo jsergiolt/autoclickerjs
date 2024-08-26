@@ -62,6 +62,31 @@ function numeroElementosTR(idTabela) {
 const targetElementMenuSoap = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[3]");
 const targetElementMenuFolhaDeRosto = getElementByXPath("//*[@id='sidebar']/div[1]/div[3]/ul/li[1]");
 //const codigoEsp = document.getElementById("lookup_key_pec_atendimento_soap_codespecialidade");
+const campoDataAtestado = getElementByXPath("//*[@id='upa_atendimento_atestado_data']");
+
+// Preencher o campo data do atestado com a data de hoje
+waitForElementToBeVisible("#upa_atendimento_atestado_data", (upa_atendimento_atestado_data) => {
+    
+    // Função para formatar a data no formato dd/mm/aaaa
+    function obterDataAtual() {
+        const data = new Date();
+        const dia = String(data.getDate()).padStart(2, '0');
+        const mes = String(data.getMonth() + 1).padStart(2, '0'); // Meses são indexados a partir de 0
+        const ano = data.getFullYear();
+        return `${dia}/${mes}/${ano}`;
+    }
+
+    // Obtendo a data atual formatada
+    const dataAtualFormatada = obterDataAtual();
+
+    if (upa_atendimento_atestado_data.value !== dataAtualFormatada) {
+        setTimeout(() => {
+            upa_atendimento_atestado_data.focus();
+            upa_atendimento_atestado_data.value = dataAtualFormatada;
+            console.log(`Valor ${dataAtualFormatada} digitado no campo.`);
+        }, 100);
+    }
+});  
 
 if(targetElementMenuFolhaDeRosto && targetElementMenuFolhaDeRosto.classList.contains('active')){
     // Se estiver na tela de atendimento da UPA já preenche o campo finalização com o código 10
